@@ -6,6 +6,9 @@ TagManager:
   tags:
   - obstacle
   - goal
+  - Floor
+  - Object
+  - Reset
   layers:
   - Default
   - TransparentFX

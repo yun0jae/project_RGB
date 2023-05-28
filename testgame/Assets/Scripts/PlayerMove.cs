@@ -1,100 +1,148 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMove : MonoBehaviour
 {
     GameManager gameManager;
+    public GameObject people;
 
-    //public float maxSpeed;
-    public float forwardspeed=3.0f;
-    public float RSidespeed = 0.5f;
+    public float playerSpeed = 10.0f;
+    public bool manual_ver = false;
+    public bool goal = false;
+    bool onGround = true;
+    bool objectR = false;
 
-    float updateTime;
-    float coolDown=0.4f;
-    int currentlane=2;
 
     Rigidbody rigid;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        people = GameObject.Find("People");
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        transform.Translate(this.transform.position.x, 0, 20 - 8 * currentlane);
-        updateTime = coolDown;
+    }
+
+    void FixedUpdate()
+    {
+
+        if (gameManager.stages[0].activeSelf)
+        {
+            bool jumpInput;
+            jumpInput = Input.GetButtonDown("Jump");
+            if (onGround & jumpInput) rigid.AddForce(Vector3.up * 20, ForceMode.Impulse);
+            if (rigid.velocity.y > 0 & rigid.position.y > 15) rigid.AddForce(Vector3.up * (-20), ForceMode.Impulse);
+
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (gameManager.stages[0].activeSelf)
         {
-            transform.Translate(forwardspeed * Time.deltaTime, 0, 0);
-
-            int h = (int)Input.GetAxisRaw("Horizontal");
-            //transform.Translate(0, 0, -RSidespeed * h);
-
-            Vector3 velo = Vector3.zero;
-            Vector3 target = new Vector3(transform.position.x,
-                                        transform.position.y,
-                                        transform.position.z - 5 * h);
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref velo, 0.1f);
-
-
-        }
-
-        if (gameManager.stages[1].activeSelf)
-        {
-            //transform.Translate(forwardspeed * Time.deltaTime, 0, 0);
-            transform.position += new Vector3(forwardspeed, 0.0f, 0.0f) * Time.deltaTime;
-
-            int h = (int)Input.GetAxisRaw("Horizontal");
-            Vector3 velo = Vector3.zero;
-            Vector3 target = new Vector3(transform.position.x,
-                                        transform.position.y,
-                                        transform.position.z - 5 * h);
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref velo, 0.1f);
-
-            //transform.Translate(0, 0, -RSidespeed * h);
-
-
-            if (Input.GetButtonDown("Jump"))
+            if (objectR)
             {
-                rigid.AddForce(Vector3.up * 8, ForceMode.Impulse);
+                manual_ver = false;
+                people.transform.Translate(0, 0, playerSpeed * Time.deltaTime);
+
+            }
+            if (goal)
+            {
+                objectR = false;
+                manual_ver = true;
+                if (Input.GetButtonDown("Fire1")) gameManager.GoNextStage();
             }
         }
 
-    }
+        //Horizontal movement
+        int h = (int)Input.GetAxisRaw("Horizontal");
 
-    void LaneMove(int h)
-    {
-        if (currentlane + h < 1 | currentlane + h > 4) Debug.Log("out");
+        Vector3 velo = Vector3.zero;
+        Vector3 target = new Vector3(transform.position.x,
+                                    transform.position.y,
+                                    transform.position.z - 5 * h);
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref velo, 0.1f);
+
+        //Vertical Movement
+        int v = (int)Input.GetAxisRaw("Vertical");
+        if (!manual_ver)
+        {
+            transform.Translate(playerSpeed*(1+v/2) * Time.deltaTime, 0, 0);
+        }
         else
         {
-            currentlane += h;
-            float lanepos = 20 - 8 * currentlane;
-            Debug.Log("lane is" + currentlane);
-            transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lanepos);
+            transform.position += new Vector3(playerSpeed, 0.0f, 0.0f) * Time.deltaTime * v;
         }
+
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.transform.CompareTag("goal"))
         {
-            gameManager.GoStageB();
+            goal = true;
+            Debug.Log("goal reached!");
+        }
+
+        if (gameManager.stages[0].activeSelf)
+        {
+            if (collision.transform.CompareTag("Object"))
+            {
+                objectR = true;
+                Debug.Log("object gained");
+            }
+
+            if (collision.transform.CompareTag("obstacle"))
+            {
+                Debug.Log(collision.gameObject.name);
+            }
+
+            if (collision.transform.CompareTag("Reset"))
+            {
+                InitPosition();
+            }
+
+            if (collision.transform.CompareTag("Floor"))
+            {
+                onGround = true;
+            }
+
         }
 
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        onGround = collision.transform.CompareTag("Floor");
+    }
+
+
     public void InitPosition()
     {
-        transform.position = new Vector3(0.0f, 2.0f, 4.0f);
+        transform.position = new Vector3(0.0f, 8.0f, 0.0f);
+
+        if (gameManager.stages[1].activeSelf)
+        {
+            manual_ver = false;
+        }
+
+        if (gameManager.stages[0].activeSelf)
+        {
+            manual_ver = true;
+            goal = false;
+            onGround = true;
+            objectR = false;
+            people.transform.position = new Vector3(-40.0f, 8.0f, 0.0f);
+        }
+
     }
 }

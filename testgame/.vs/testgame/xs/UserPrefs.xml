@@ -8,8 +8,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMove.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerMove.cs" Line="45" Column="14" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="37" Column="36" />
+      <File FileName="Assets/Scripts/PlayerMove.cs" Line="90" Column="90" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="35" Column="9" />
+      <File FileName="Assets/Scripts/CamScript.cs" Line="3" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

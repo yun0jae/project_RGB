@@ -5,16 +5,17 @@ using UnityEngine;
 public class CamScript : MonoBehaviour
 {
     GameObject player;
-    WorldREffectScript worldREffectScript;
     GameManager gameManager;
+    WorldREffectScript effectScript;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        worldREffectScript = GameObject.Find("Main Camera").GetComponent<WorldREffectScript>();
-        worldREffectScript.enabled = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        effectScript = GameObject.Find("Main Camera").GetComponent<WorldREffectScript>();
+        effectScript.enabled = false;
     }
 
     // Update is called once per frame
@@ -25,7 +26,11 @@ public class CamScript : MonoBehaviour
 
         if (gameManager.stages[1].activeSelf)
         {
-            worldREffectScript.enabled = true;
+            effectScript.enabled = true;
+        }
+        else
+        {
+            effectScript.enabled = false;
         }
 
 

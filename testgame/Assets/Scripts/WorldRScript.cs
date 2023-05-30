@@ -16,7 +16,7 @@ public class WorldRScript : MonoBehaviour
     public float playerSpeed = 10.0f;
 
     bool init;
-    public bool objectR; // objectR grabbed
+    public bool objectR; // objectR  
     public bool goal; // goal 지점 도달
 
     public bool manual_ver; // true-수동전, false-자동 전진
@@ -41,7 +41,7 @@ public class WorldRScript : MonoBehaviour
         rigid = player.GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
 
-        InitRoundR();
+        InitRound();
     }
 
     void FixedUpdate()
@@ -122,7 +122,7 @@ public class WorldRScript : MonoBehaviour
 
     }
 
-    public void InitRoundR()
+    public void InitRound()
     {
         player.transform.position = new Vector3(0.0f, 8.0f, 0.0f);
         people.transform.position = new Vector3(-30, 2, 1); //모델링 때문에 틀어진 좌표 보정

@@ -321,10 +321,6 @@
 -r:"/Applications/Unity/Hub/Editor/2021.3.20f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.20f1/Unity.app/Contents/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.20f1/Unity.app/Contents/NetStandard/ref/2.1.0/netstandard.dll"
-<<<<<<< Updated upstream
--r:"/Users/youjin/Desktop/unity_projects/testgame/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/lib/ReportGenerator/ReportGeneratorMerged.dll"
--r:"/Users/youjin/Desktop/unity_projects/testgame/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
-=======
 -r:"/Users/youjin/Desktop/project_RGB/testgame/Library/PackageCache/com.unity.testtools.codecoverage@1.2.2/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"/Users/youjin/Desktop/project_RGB/testgame/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/AssistantCoreSDKEditor.ref.dll"
@@ -363,7 +359,6 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/Oculus.VR.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/Oculus.VR.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/Oculus.VR.Scripts.Editor.ref.dll"
->>>>>>> Stashed changes
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"

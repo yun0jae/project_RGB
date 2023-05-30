@@ -5,7 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - obstacle
+<<<<<<< Updated upstream
   - goal
+=======
+  - Floor
+  - Reset
+  - Left
+  - Right
+  - Down
+  - Up
+  - Goal
+  - Object
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

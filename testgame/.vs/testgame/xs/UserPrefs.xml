@@ -1,15 +1,22 @@
 ﻿<Properties StartupConfiguration="{FDF04EBF-96ED-9FC7-40B4-E1B5E149D899}|">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ded305b5-1aef-4ec0-9350-b0c6e03af9ce" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8de1d561-56af-43c0-8a23-8774a78821a1" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMove.cs">
     <Files>
+<<<<<<< Updated upstream
       <File FileName="Assets/Scripts/PlayerMove.cs" Line="45" Column="14" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="37" Column="36" />
+=======
+      <File FileName="Assets/Scripts/PlayerMove.cs" Line="15" Column="21" />
+      <File FileName="Assets/Scripts/WorldRScript.cs" Line="20" Column="19" />
+      <File FileName="Assets/Scripts/WorldBScript.cs" Line="16" Column="38" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="29" Column="36" />
+      <File FileName="Assets/Scripts/WorldREffectScript.cs" Line="22" Column="23" />
+      <File FileName="Assets/Scripts/CamScript.cs" Line="27" Column="10" />
+>>>>>>> Stashed changes
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,4 +30,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

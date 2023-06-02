@@ -9,21 +9,19 @@ public class GameManager : MonoBehaviour
     public GameObject[] stages;
     public int currentStage = 0;
 
+    // Start is called before the first frame update
 
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerMove>();
+        stages = new GameObject[2];
+        stages[0] = GameObject.Find("WorldR");
+        stages[1] = GameObject.Find("WorldB");
+        //stages[2] = GameObject.Find("FinalStage");
 
-        stages = new GameObject[4];
-        stages[0] = GameObject.Find("WorldB");
-        stages[1] = GameObject.Find("WorldR");
-        stages[2] = GameObject.Find("WorldG");
-        stages[3] = GameObject.Find("FinalStage");
-
+        player.InitPosition();
         stages[1].SetActive(false);
-        stages[2].SetActive(false);
-        stages[3].SetActive(false);
-
+        //stages[2].SetActive(false);
     }
 
     void Start()
@@ -43,6 +41,7 @@ public class GameManager : MonoBehaviour
 
         currentStage += 1;
         stages[currentStage].SetActive(true);
+        player.InitPosition();
     }
 
 }
